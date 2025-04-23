@@ -16,7 +16,7 @@ screenGui.DisplayOrder = 999999 -- High priority to cover everything
 screenGui.ResetOnSpawn = false
 screenGui.Parent = Players.LocalPlayer:WaitForChild("PlayerGui")
 
--- Background
+-- Background (covers entire screen)
 local background = Instance.new("Frame")
 background.Size = UDim2.new(1, 0, 1, 0)
 background.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
@@ -28,10 +28,10 @@ local robloxIcon = Instance.new("ImageLabel")
 robloxIcon.Size = UDim2.new(0, 100, 0, 100)
 robloxIcon.Position = UDim2.new(0.5, -50, 0.2, -50)
 robloxIcon.BackgroundTransparency = 1
-robloxIcon.Image = "rbxassetid://4918373417"
+robloxIcon.Image = "rbxassetid://4918373417" -- Roblox logo
 robloxIcon.Parent = background
 
--- Spin logic
+-- Spin logic (spinning the logo)
 local rotation = 0
 local running = true
 RunService.RenderStepped:Connect(function(dt)
@@ -41,7 +41,7 @@ RunService.RenderStepped:Connect(function(dt)
 	end
 end)
 
--- Loading Text
+-- Loading Text (Main text)
 local loadingText = Instance.new("TextLabel")
 loadingText.Text = "Loading..."
 loadingText.Font = Enum.Font.GothamBold
@@ -58,7 +58,7 @@ stroke.Color = Color3.fromRGB(255, 255, 255)
 stroke.Thickness = 2
 stroke.Parent = loadingText
 
--- Status Text
+-- Status Text (progressive loading message)
 local statusText = Instance.new("TextLabel")
 statusText.Text = "Loading assets..."
 statusText.Font = Enum.Font.Gotham
@@ -69,7 +69,7 @@ statusText.Size = UDim2.new(1, 0, 0.05, 0)
 statusText.Position = UDim2.new(0, 0, 0.49, 0)
 statusText.Parent = background
 
--- Percent Text
+-- Percent Text (showing percentage of completion)
 local percentText = Instance.new("TextLabel")
 percentText.Text = "0%"
 percentText.Font = Enum.Font.Gotham
@@ -134,7 +134,7 @@ for i = 0, 100 do
 	wait(1.8)
 end
 
--- Fade out everything
+-- Fade out everything once loading is complete
 for i = 1, 10 do
 	background.BackgroundTransparency = i / 10
 	loadingText.TextTransparency = i / 10
